@@ -98,7 +98,7 @@ def plot_traj(ax,stamps,traj,style,color,label,fontsize_plt):
     last = stamps[0]
 #    ax.axis([0.5,6,-2.5,2])
 #    ax.axis([0.5,4,-0.2,0.8])
-#    ax.axis([-4,-1,-1,0.8])
+    #ax.axis([-4,-1,-1,0.8])
 #    ax.axis([0,10,0,14])
     #ax.yaxis.set_major_locator(MultipleLocator(0.2))
     plt.xlabel("x[m]",fontsize=fontsize_plt)
@@ -191,12 +191,16 @@ if __name__=="__main__":
         import matplotlib.pylab as pylab
         from matplotlib.patches import Ellipse
         from matplotlib.pyplot import MultipleLocator
+        #plt.rcParams['figure.subplot.top']=0.99
+        plt.rcParams['figure.subplot.top']=0.98
+        plt.rcParams['figure.subplot.right']=0.99
+        plt.rcParams['figure.subplot.left']=0.11#0.13#0.1#0.14#0.16
         fig = plt.figure()#figsize=(18.5,10.5)
         fig.set_size_inches(8, 6)
         ax = fig.add_subplot(111)
         labels=["", "", ""]
-        #labels=["ground truth", "estimated", "difference"]
-        #labels=["Encoder", "VEORBSLAM2", ""]
+        labels=["ground truth", "estimated", "difference"]
+        #labels=["Encoders_CF", "VEOS2", ""]
         fontsize_plt = 18
         plot_traj(ax,first_stamps,first_xyz_full.transpose().A,'-',"black", labels[0],fontsize_plt)
         plot_traj(ax,second_stamps,second_xyz_full_aligned.transpose().A,'-',"blue", labels[1],fontsize_plt)
