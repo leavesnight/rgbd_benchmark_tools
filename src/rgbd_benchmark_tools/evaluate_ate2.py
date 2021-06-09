@@ -97,7 +97,7 @@ def plot_traj(ax,stamps,traj,style,color,label):
     y = []
     last = stamps[0]
 #    ax.axis([0.5,6,-2.5,2])
-    ax.axis([0.5,4,-0.2,0.8])
+#    ax.axis([0.5,4,-0.2,0.8])
 #    ax.axis([-4,-1,-1,0.8])
 #    ax.axis([0,10,0,14])
     plt.xlabel("x[m]",fontsize=18)
@@ -113,15 +113,15 @@ def plot_traj(ax,stamps,traj,style,color,label):
             x.append(traj[i][0])
             y.append(traj[i][1])
         elif len(x)>0:
-#            ax.plot(x,y,style,color=color,label=label,lw=3)
-#	    label=""
-	    ax.plot(x,y,style,color=color,label="",lw=3)
+            ax.plot(x,y,style,color=color,label=label,lw=3)
+            label=""
+#            ax.plot(x,y,style,color=color,label="",lw=3)
             x=[]
             y=[]
         last= stamps[i]
     if len(x)>0:
-#        ax.plot(x,y,style,color=color,label=label,lw=3)
-	ax.plot(x,y,style,color=color,label="",lw=3)
+        ax.plot(x,y,style,color=color,label=label,lw=3)
+        #ax.plot(x,y,style,color=color,label="",lw=3)
             
 
 if __name__=="__main__":
@@ -200,7 +200,7 @@ if __name__=="__main__":
 #        plot_traj(ax,second_stamps,second_xyz_full_aligned.transpose().A,'-',"blue","estimated")
 
         label=""
-#	label="difference"
+        label="difference"
         for (a,b),(x1,y1,z1),(x2,y2,z2) in zip(matches,first_xyz.transpose().A,second_xyz_aligned.transpose().A):
             ax.plot([x1,x2],[y1,y2],'-',color="red",label=label,lw=1)
             label=""

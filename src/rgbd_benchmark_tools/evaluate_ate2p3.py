@@ -98,9 +98,10 @@ def plot_traj(ax,stamps,traj,style,color,label,fontsize_plt):
     last = stamps[0]
 #    ax.axis([0.5,6,-2.5,2])
 #    ax.axis([0.5,4,-0.2,0.8])
-    #ax.axis([-4,-1,-1,0.8])
+#    ax.axis([-4,-1,-1.3,0.8])
 #    ax.axis([0,10,0,14])
-    #ax.yaxis.set_major_locator(MultipleLocator(0.2))
+#    ax.yaxis.set_major_locator(MultipleLocator(0.2))
+#    ax.xaxis.set_major_locator(MultipleLocator(5.0))
     plt.xlabel("x[m]",fontsize=fontsize_plt)
     plt.ylabel("y[m]",fontsize=fontsize_plt)
     #ax.spines['bottom'].set_linewidth(3)
@@ -192,16 +193,17 @@ if __name__=="__main__":
         from matplotlib.patches import Ellipse
         from matplotlib.pyplot import MultipleLocator
         #plt.rcParams['figure.subplot.top']=0.99
-        plt.rcParams['figure.subplot.top']=0.98
+        plt.rcParams['figure.subplot.top']=0.97#0.98
+        plt.rcParams['figure.subplot.bottom']=0.14
         plt.rcParams['figure.subplot.right']=0.99
-        plt.rcParams['figure.subplot.left']=0.11#0.13#0.1#0.14#0.16
+        plt.rcParams['figure.subplot.left']=0.18#0.165#0.18#0.11#0.13#0.1#0.14#0.16
         fig = plt.figure()#figsize=(18.5,10.5)
         fig.set_size_inches(8, 6)
         ax = fig.add_subplot(111)
         labels=["", "", ""]
         labels=["ground truth", "estimated", "difference"]
         #labels=["Encoders_CF", "VEOS2", ""]
-        fontsize_plt = 18
+        fontsize_plt = 26#18
         plot_traj(ax,first_stamps,first_xyz_full.transpose().A,'-',"black", labels[0],fontsize_plt)
         plot_traj(ax,second_stamps,second_xyz_full_aligned.transpose().A,'-',"blue", labels[1],fontsize_plt)
 #        plot_traj(ax,first_stamps,first_xyz_full.transpose().A,'-',"black","Encoder&IMU")
@@ -213,8 +215,9 @@ if __name__=="__main__":
             ax.plot([x1,x2],[y1,y2],'-',color="red",label=label,lw=1)
             label=""
          
-        fontsize_plt = 17
-        ax.legend(fontsize=fontsize_plt)
+        fontsize_plt = 26#17
+#        ax.legend(fontsize=fontsize_plt)
+        ax.legend(fontsize=fontsize_plt, loc='lower right')#, bbox_to_anchor=(1, 0))
             
         ax.set_xlabel('x [m]')
         ax.set_ylabel('y [m]')
