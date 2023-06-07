@@ -1,2 +1,4 @@
 *.png
 *.txt
+cmake-build-*/
+.idea/
